@@ -62,16 +62,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com</groupId>
-			<artifactId>airbnb</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
@@ -91,7 +85,9 @@
 							<artifactId>lombok</artifactId>
 						</path>
 					</annotationProcessorPaths>
-				</configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
