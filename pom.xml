@@ -10,16 +10,46 @@
 	</parent>
 	<groupId>com</groupId>
 	<artifactId>airbnb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>airbnb</name>
 	<description>Airbnb booking clone API</description>
 	<url/>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
 	<licenses>
 		<license/>
 	</licenses>
-	<developers>
-		<developer/>
-	</developers>
+    <developers>
+        <developer>
+            <id>airbnb</id>
+            <name>Le Anh Quan</name>
+            <email>quanla.work@gmail.com</email>
+        </developer>
+    </developers>
+
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -29,11 +59,31 @@
 	<properties>
 		<java.version>21</java.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
+        <spring-boot.version>3.1.2</spring-boot.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <checkstyle.version>10.12.1</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
+        <profile.test>test-dev</profile.test>
+        <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
+
+        <app.name>airbnb-service</app.name>
+
+        <!-- set the build time -->
+        <build.timestamp.version>${maven.build.timestamp}</build.timestamp.version>
+        <maven.build.timestamp.format>yyyyMMdd.HHmmss</maven.build.timestamp.format>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-expression</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,6 +121,16 @@
 			<artifactId>mapstruct-processor</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -104,6 +164,14 @@
 		</plugins>
 	</build>
 	<repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -114,6 +182,14 @@
 		</repository>
 	</repositories>
 	<pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>

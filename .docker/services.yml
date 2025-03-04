@@ -1,0 +1,15 @@
+name: services
+services:
+  postgresql:
+    extends:
+      file: ./postgres.yml
+      service: postgres
+#  redis:
+#    extends:
+#      file: ./redis.yml
+#      service: redis
+#  redis-insight:
+#    extends:
+#      file: ./redis.yml
+#      service: redis-insight
+
