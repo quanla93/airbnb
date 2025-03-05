@@ -29,7 +29,7 @@ jobs: # Command when trigger active
     - name: Copy file jar to artifact stage # Step copy file jar to staging and push to stage repositoy
       run: mkdir staging && cp target/*.jar staging
     - name: Push to artifact stage repository
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Package
         path: staging
